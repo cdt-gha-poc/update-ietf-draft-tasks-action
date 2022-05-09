@@ -44,7 +44,7 @@ repository and enable manual runs.
 ```
 # {REPO_ROOT}/.github/workflows/update.yml
 
-name: 'update-ietf-draft-tasks-action'
+name: 'Update draft actions'
 on:
   workflow_dispatch:
     inputs:

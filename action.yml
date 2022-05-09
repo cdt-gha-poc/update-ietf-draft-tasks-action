@@ -24,9 +24,14 @@ runs:
       shell: bash
       working-directory: update-tasks-action
       run: |
+        RELEASE_VERSION=${{ inputs.release-version }}
+        if [ -z "$RELEASE_VERSION" ]; then
+          RELEASE_VERSION="main"
+        fi
+
         git status
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         git add workflows/
-        git commit -m "update task workflows to version at ${{ inputs.release-version }}"
+        git commit -m "update task workflows to version at $RELEASE_VERSION"
         git push

@@ -77,7 +77,7 @@ Please see below for information on action versions.
 After following the Quickstart instructions above for your draft repository, go
 to the Actions tab and select Update draft tasks in the sidebar.
 
-TODO screenshot
+![Update draft actions workflow](images/update_draft_tasks.png)
 
 Under the workflow runs section there will be a button labeled Run workflow.
 Clicking this brings up the option to override the `release_version`. If you
@@ -89,7 +89,7 @@ the most up to date version is used.
 A successful run will be shown in green under the Actions tab. A failed run
 will be shown in red, and link to it will be emailed to you.
 
-TODO screenshots
+![Workflow runs](images/workflow_runs.png)
 
 ## Action Versions
 

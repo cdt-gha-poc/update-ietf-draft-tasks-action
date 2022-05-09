@@ -2,7 +2,7 @@ name: 'update-ietf-draft-tasks-action'
 description: 'Installs make, validate, export tasks for IETF Draft repo'
 
 inputs:
-  release_version:
+  release-version:
     description: 'Git ref of create-ietf-draft-repo-action to use (eg. v0.1.1). Defaults to main'
     default: main
 
@@ -13,14 +13,14 @@ runs:
       uses: actions/checkout@v3
       with:
         repository: 'IRTF-HRPC/create-ietf-draft-repo-action'
-        ref: ${{ inputs.release_version }}
+        ref: ${{ inputs.release-version }}
         path: create-ietf-draft-repo-action
 
     - id: copy-latest-task-workflows
       shell: bash
       run: cp -r create-ietf-draft-repo-action/workflows/* update-tasks-action/workflows/
 
-    - id: push-changes-test
+    - id: push-changes
       shell: bash
       working-directory: update-tasks-action
       run: |
@@ -28,5 +28,5 @@ runs:
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         git add workflows/
-        git commit -m "update task workflows to version at ${{ inputs.release_version }}"
+        git commit -m "update task workflows to version at ${{ inputs.release-version }}"
         git push

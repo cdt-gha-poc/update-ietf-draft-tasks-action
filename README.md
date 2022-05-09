@@ -44,7 +44,30 @@ repository and enable manual runs.
 ```
 # {REPO_ROOT}/.github/workflows/update.yml
 
-TODO
+name: 'update-ietf-draft-tasks-action'
+on:
+  workflow_dispatch:
+    inputs:
+      release-version:
+        description: 'Git ref of create-ietf-draft-repo-action to use (eg. v0.1.1). Defaults to main'
+        default: main
+
+jobs:
+  update-draft-tasks:
+    runs-on: ubuntu-latest
+    name: tests checkouts inside the action
+
+    steps:
+      - id: checkout
+        uses: actions/checkout@v3
+        with:
+          path: update-tasks-action
+
+      - id: update-action
+        name: Update draft task actions
+        uses: cdt-gha-poc/update-ietf-draft-tasks-action
+        with:
+          release-version: ${{ inputs.release-version }}
 ```
 
 Please see below for information on action versions.

@@ -18,7 +18,9 @@ runs:
 
     - id: copy-latest-task-workflows
       shell: bash
-      run: cp -r create-ietf-draft-repo-action/workflows/* update-tasks-action/workflows/
+      run: |
+        mkdir -p update-tasks-action/.github/workflows/
+        cp -r create-ietf-draft-repo-action/workflows/* update-tasks-action/.github/workflows/
 
     - id: push-changes
       shell: bash
